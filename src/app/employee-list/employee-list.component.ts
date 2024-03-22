@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Employee } from '../employee';
+import {Component, OnInit} from '@angular/core';
+import {Employee} from '../employee';
 import {NgForOf} from "@angular/common";
+import {EmployeeService} from "../employee.service";
 
 @Component({
   selector: 'app-employee-list',
@@ -11,27 +12,21 @@ import {NgForOf} from "@angular/common";
   templateUrl: './employee-list.component.html',
   styleUrl: './employee-list.component.css'
 })
-export class EmployeeListComponent implements OnInit{
+export class EmployeeListComponent implements OnInit {
 
   employees: Employee[];
 
-  constructor() { }
-
-  ngOnInit(): void {
-    this.employees = [
-      {
-        id: 1,
-        firstName: 'John',
-        lastName: 'Doe',
-        emailId: 'john@gmail.com'
-      },
-      {
-        id: 2,
-        firstName: 'Karan',
-        lastName: 'Patel',
-        emailId: 'karen@gmail.com'
-      }
-    ]
+  constructor(private employeeService: EmployeeService) {
   }
 
+  ngOnInit(): void {
+    this.getEmployees();
+  }
+
+  private getEmployees() {
+    this.employeeService.getEmployeesList().subscribe(data => {
+      console.log(data);
+      this.employees = data;
+    });
+  }
 }
