@@ -17,6 +17,11 @@ export class CreateEmployeeComponent{
 
   constructor(private employeeService: EmployeeService, private router: Router) { }
 
+  onSubmit(){
+    this.saveEmployee();
+    this.goToEmployeeList();
+  }
+
   saveEmployee(){
     this.employeeService.createEmployee(this.employee).subscribe(data => {
       console.log(data);
@@ -27,10 +32,4 @@ export class CreateEmployeeComponent{
   goToEmployeeList(){
     this.router.navigate(['/employees']);
   }
-
-  onSubmit(){
-    this.saveEmployee();
-    this.goToEmployeeList();
-  }
-
 }
