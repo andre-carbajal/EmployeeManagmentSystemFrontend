@@ -9,3 +9,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The appli
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+## Backend
+
+The backend used for this project is available at this [link](https://github.com/andre-carbajal/EmployeeManagmentSystemBackend)
